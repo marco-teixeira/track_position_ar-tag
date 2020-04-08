@@ -1,3 +1,5 @@
+[Read this page in English](https://github.com/marco-teixeira/track_position_ARtag/blob/master/README.md)
+
 Descrição 
 =================================
 
@@ -107,8 +109,7 @@ roslaunch track_position_ARtag track_position_ARtag.launch
 
 Vídeo:
 ------------------------------- 
-
-
+https://www.youtube.com/watch?v=J_LvoxQHFf4&feature=youtu.be
 
 
 
