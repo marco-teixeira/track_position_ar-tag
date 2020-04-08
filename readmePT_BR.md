@@ -93,7 +93,7 @@ Instalando:
 --------------------------------
 ```
 $ cd ~/catkin_ws/src/
-$ git clone 
+$ git clone https://github.com/marco-teixeira/track_position_ARtag
 $ cd ~/catkin_ws
 $ catkin_make
 ```
