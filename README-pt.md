@@ -10,9 +10,8 @@ Este pacote é desenvolvido para operar no ROS (Robot Operating System) e tem po
 Configuração do sistema utilizado 
 --------------------------------
 
-Ubuntu 18.04.4 (http://releases.ubuntu.com/18.04.4/) 
-
-ROS Melodic (http://wiki.ros.org/melodic/Installation/Ubuntu) 
+* Ubuntu 18.04.4 (http://releases.ubuntu.com/18.04.4/) 
+* ROS Melodic (http://wiki.ros.org/melodic/Installation/Ubuntu) 
 
  
 
