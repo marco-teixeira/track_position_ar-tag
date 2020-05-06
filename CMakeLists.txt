@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(track_position_ARtag)
+project(track_position_ar-tag)
 
 
 find_package(catkin REQUIRED COMPONENTS

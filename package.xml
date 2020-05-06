@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>track_position_ARtag</name>
+  <name>track_position_ar-tag</name>
   <version>0.0.0</version>
-  <description>The track_position_ARtag package</description>
+  <description>The track_position_ar-tag package</description>
 
  
   <maintainer email="mantonio.t91@gamil.com">Marco Teixeira</maintainer>
