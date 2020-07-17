@@ -4,24 +4,24 @@
 	<arg name="run_rviz" default="true" />
 	<arg name="run_ar_tracker_alvar" default="true" />
 
-	<node name="track_position_line" pkg="track_position_ARtag" type="track_position_ARtag.py" respawn="true" output="screen" > 
-		<param name="track_ar_ids_param" type="String" value="4,13" />
-		<param name="track_ar_colors_param" type="String" value="[1,0,0,1];[0,1,0,1]" />
+	<node name="track_position_line" pkg="track_position_ar_tag" type="track_position_ARtag.py" respawn="true" output="screen" > 
+		<param name="track_ar_ids_param" type="String" value="4,13,9,0" />
+		<param name="track_ar_colors_param" type="String" value="[1,0,0,1];[0,1,0,1];[0,0,1,1];[0,0,0,1]" />
 		<param name="ros_rate_param" type="double" value="10" />
 		<param name="queue_size_param" type="double" value="10" />
 		<param name="considered_displacement" type="double" value="0.02" />
 		<param name="line_scale" type="double" value="0.01" />
-		<param name="input_topic" type="String" value="/ar_pose_marker_2" />	
+		<param name="input_topic" type="String" value="/ar_pose_marker" />	
 		<param name="output_topic" type="String" value="track_position_line" />	
 		<param name="output_frame" type="String" value="usb_cam" />
 	</node>
 
 	<group if="$(arg run_rviz)">
-		 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find track_position_ARtag)/config/rviz/rviz_config.rviz" />
+		 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find track_position_ar_tag)/config/rviz/rviz_config.rviz" />
 	</group>
 	
 	<group if="$(arg run_ar_tracker_alvar)">
-		<include file="$(find track_position_ARtag)/launch/ar_tracker_alvar.launch" /> 
+		<include file="$(find track_position_ar_tag)/launch/ar_tracker_alvar.launch" /> 
 	</group>
 
 
