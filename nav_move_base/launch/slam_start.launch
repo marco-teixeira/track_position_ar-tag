@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="static_map" default="false"/> <!--true or false only. If false, create the map as you walk. /-->
+	<arg name="use_amcl" default="false"/><!--true or false only -->
+	<arg name="map_name" default="map.yaml"/> <!--If dynamic_map is false, you must use a map file to be loaded.Map files must be saved in the map folder. Add ".yaml" -->
+	<arg name="lidar_frame" default="base_link"/>
+	<arg name="lidar_topic" default="/scan"/>
+	<arg name="open_rviz" default="true"/><!--true or false only -->
+	
+<node pkg="gmapping" type="slam_gmapping" name="gmapping_thing" output="screen" />
+
+	
+  	<!-- rviz -->
+	<group if="$(arg open_rviz)">
+  		 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find nav_move_base)/Rviz/hector.rviz" />
+	</group>
+
+	<!-- move_base static-->
+	<group if="$(arg static_map)">
+		<!-- start map_server-->
+		<node name="map_server" pkg="map_server" type="map_server" args="$(find nav_move_base)/map/$(arg map_name)"/>
+
+		<!-- start move_base-->
+  		<include file="$(find nav_move_base)/launch/move_base.launch" >
+		 	<arg name="static_map" value="$(arg static_map)" /> 
+			<arg name="lidar_frame" default="$(arg lidar_frame)"/>
+			<arg name="lidar_topic" default="$(arg lidar_topic)"/>
+		</include>
+	</group>
+	
+	<!-- move_base dynamic-->
+	<group unless="$(arg static_map)">
+		<param name="/move_base/global_costmap/width" value= "200" />
+		<param name="/move_base/global_costmap/height" value= "200" />
+		<param name="/move_base/global_costmap/origin_x" value= "-100" />
+		<param name="/move_base/global_costmap/origin_y" value= "-100" />
+  		<include file="$(find nav_move_base)/launch/move_base.launch" >
+		 	<arg name="static_map" value="$(arg static_map)" /> 
+			<arg name="lidar_frame" default="$(arg lidar_frame)"/>
+			<arg name="lidar_topic" default="$(arg lidar_topic)"/>
+		</include>
+	</group>
+
+
+	<!-- amcl-->
+	<group if="$(arg use_amcl)">
+  		<include file="$(find nav_move_base)/launch/amcl.launch" > 
+			<arg name="lidar_frame" default="$(arg lidar_frame)"/>
+			<arg name="lidar_topic" default="$(arg lidar_topic)"/>
+		</include>
+	</group>
+
+
+ 
+</launch>

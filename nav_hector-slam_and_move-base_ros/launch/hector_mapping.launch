@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!-- Executa o mapeamento com um unico equipamento, sem utilizar a odometria do robô -->
 <launch>
- 
+  <rosparam command="delete" param="/hector_mapping/" />
+  <arg name="lidar_frame" default="scan"/>
+  <arg name="lidar_topic" default="/scan"/>
+
   <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
-  <arg name="base_frame" default="Lidar"/>
-  <arg name="odom_frame" default="Lidar"/>
+  <arg name="base_frame" default="$(arg lidar_frame)"/>
+  <arg name="odom_frame" default="$(arg lidar_frame)"/>
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="5"/>
-  <arg name="scan_topic" default="/scan"/>
+  <arg name="scan_topic" default="$(arg lidar_topic)"/>
   <arg name="map_size" default="2048"/>
   
   <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">

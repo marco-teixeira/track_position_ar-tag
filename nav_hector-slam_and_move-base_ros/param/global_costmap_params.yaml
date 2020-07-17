@@ -1,0 +1,5 @@
+global_costmap:
+  global_frame: map_hector
+  update_frequency: 5.0
+  transform_tolerance: 1.8
+

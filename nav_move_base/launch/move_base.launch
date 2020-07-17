@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+	<!--clear previous settings /-->
+	<rosparam command="delete" param="/move_base/" />
+
+	<!-- args -->
+	<arg name="static_map" default="false"/>
+	<arg name="lidar_frame" default="base_link"/>
+	<arg name="lidar_topic" default="/scan"/>
+	
+  	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	    	<param name="global_costmap/static_map" value="$(arg static_map)" /> 
+		<param name="global_costmap/robot_base_frame" value="$(arg lidar_frame)" /> 
+		<param name="local_costmap/robot_base_frame" value= "$(arg lidar_frame)" />
+		<param name="local_costmap/obstacle_layer/laser_scan_sensor/topic" value= "$(arg lidar_topic)" />
+		<param name="local_costmap/obstacle_layer/laser_scan_sensor/sensor_frame" value= "$(arg lidar_frame)" />
+
+		<param name="global_costmap/robot_base_frame" value= "$(arg lidar_frame)" />
+		<param name="global_costmap/obstacle_layer/laser_scan_sensor/topic" value= "$(arg lidar_topic)" />
+		<param name="global_costmap/obstacle_layer/laser_scan_sensor/sensor_frame" value= "$(arg lidar_frame)" />
+	    	<rosparam file="$(find nav_move_base)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+	    	<rosparam file="$(find nav_move_base)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+	    	<rosparam file="$(find nav_move_base)/param/local_costmap_params.yaml" command="load" />
+	    	<rosparam file="$(find nav_move_base)/param/global_costmap_params.yaml" command="load" />
+	    	<rosparam file="$(find nav_move_base)/param/base_local_planner_params.yaml" command="load" />
+	    	<rosparam file="$(find nav_move_base)/param/move_base_params.yaml" command="load" />
+    </node>
+</launch>
