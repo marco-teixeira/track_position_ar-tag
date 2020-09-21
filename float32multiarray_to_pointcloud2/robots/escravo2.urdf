@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<robot name="escravo2">
+<link name="Escravo2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="16.534" />
+      <inertia ixx="0.24623" ixy="-6.7455E-06" ixz="0.018842" iyy="0.43281" iyz="-0.00011026" izz="0.23427" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://lars_2018/robots/escravos.STL" />
+      </geometry>
+       <material name="blue">
+        <color rgba="0 0 255 1"/>
+      </material>
+    </visual>
+  </link>
+</robot>
+
