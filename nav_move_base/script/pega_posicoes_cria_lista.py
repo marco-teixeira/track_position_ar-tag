@@ -11,7 +11,7 @@ import tf
 import math
 
 
-frame = rospy.get_param("/lidar/frame","Lidar")
+frame = rospy.get_param("/lidar/frame","base_link")
 #topico = rospy.get_param("/lidar/topic","Lidar")
 
 
